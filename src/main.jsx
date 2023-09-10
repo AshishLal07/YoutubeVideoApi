@@ -7,10 +7,10 @@ import {YoutubeContextProvider} from './youtubeSource.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
-		<YoutubeContextProvider>
-			<BrowserRouter>
+		<BrowserRouter basename="/YoutubeVideoApi/">
+			<YoutubeContextProvider>
 				<App />
-			</BrowserRouter>
-		</YoutubeContextProvider>
+			</YoutubeContextProvider>
+		</BrowserRouter>
 	</React.StrictMode>
 );
