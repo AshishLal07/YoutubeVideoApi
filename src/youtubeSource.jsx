@@ -23,10 +23,7 @@ export const YoutubeContextProvider = ({children}) => {
 
 	const videoSearch = async (search) => {
 		const urlInfo = await fetch(
-			`https://www.youtube.com/oembed?url=${search}&format=json`,
-			{
-				referrerPolicy: 'unsafe_url',
-			}
+			`https://www.youtube.com/oembed?url=${search}&format=json`
 		);
 		const dataUrl = await urlInfo.json();
 		const {title} = dataUrl;
