@@ -7,7 +7,6 @@ import {ProgressBar} from 'react-loader-spinner';
 
 const EarningPage = () => {
 	const {isLoading, popup} = youtubeGloabalContext();
-
 	if (isLoading) {
 		return (
 			<>

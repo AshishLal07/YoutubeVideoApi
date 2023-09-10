@@ -20,7 +20,9 @@ const Nav = () => {
 					{path !== '/' ? (
 						<div className="flex items-center gap-5">
 							<div
-								onClick={() => setPopup(true)}
+								onClick={() => {
+									setPopup((prev) => !prev);
+								}}
 								className="px-6 py-3 border border-gray-400 text-xl rounded-3xl flex gap-2 items-center cursor-pointer"
 							>
 								<img src={phone} alt="phone" className="h-5 w-5" />

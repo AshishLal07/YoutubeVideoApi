@@ -6,9 +6,10 @@ import {useNavigate} from 'react-router-dom';
 import {youtubeGloabalContext} from '../youtubeSource';
 
 const Popup = () => {
-	const [user, setUser, setSearch] = useState({name: '', mobile: ''});
+	const [user, setUser] = useState({name: '', mobile: ''});
 	const [reqCall, setReqCall] = useState(false);
-	const {setPopup} = youtubeGloabalContext();
+	const {setPopup, setSearch} = youtubeGloabalContext();
+
 	const navigate = useNavigate();
 	return (
 		<>
@@ -36,7 +37,7 @@ const Popup = () => {
 								<button
 									onClick={() => {
 										setReqCall(false);
-										setPopup(false);
+										setPopup((prev) => !prev);
 										setSearch('');
 										navigate('/');
 									}}

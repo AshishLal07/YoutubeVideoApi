@@ -22,20 +22,19 @@ export const YoutubeContextProvider = ({children}) => {
 	const [thumbnail, setThumbnail] = useState('');
 
 	const videoSearch = async (search) => {
-		const urlInfo = await fetch(
-			`https://www.youtube.com/oembed?url=${search}&format=json`
-		);
-		const dataUrl = await urlInfo.json();
-		const {title} = dataUrl;
-
 		const API_KEY = 'AIzaSyCQu3-ic47ld7zoPrPTj-mYVeMzWD_-NeM';
-		const URI = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${title}&type=video&type=channel&key=${API_KEY}`;
+		const urlParms = new URL(search);
+		const videoId = urlParms.searchParams.get('v');
 
-		const resp = await fetch(URI);
-		const data = await resp.json();
-		if (resp.ok) {
-			const videoId = data.items[0]['id']['videoId'];
-			const channelId = data.items[0]['snippet']['channelId'];
+		const vidResp = await fetch(
+			`https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${API_KEY}`
+		);
+
+		const data = await vidResp.json();
+		const channelId = data.items[0]['snippet']['channelId'];
+		const title = data.items[0]['snippet']['localized']['title'];
+
+		if (vidResp.ok) {
 			const thumbnailImg =
 				data.items[0]['snippet']['thumbnails']['medium']['url'];
 
