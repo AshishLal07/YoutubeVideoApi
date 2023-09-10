@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import PopupForm from './popupForm';
+import PopupForm from './PopupForm';
 import PopupSuccess from './PopupSuccess';
 import arrow from '../assets/arrow.png';
 import {useNavigate} from 'react-router-dom';
